@@ -1,0 +1,101 @@
+/* Sboccy — sito. Stessi colori e caratteri dell'app. */
+@font-face { font-family: "Lora"; src: url("fonts/Lora-Variable.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+:root {
+  --cream: #eef5e6;
+  --mute: rgba(238, 245, 230, .78);
+  --faint: rgba(238, 245, 230, .55);
+  --glass: rgba(255, 255, 255, .10);
+  --edge: rgba(255, 255, 255, .22);
+  --forest: #1f4d2c;
+  --leaf: #3c7a43;
+  --aqua: #a6e6ee;
+  --sun: #f6c544;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cream);
+  font: 400 16px/1.6 "Poppins", system-ui, sans-serif;
+  background-color: #1e4a2a;
+  background-image:
+    radial-gradient(ellipse 90% 45% at 50% 12%, rgba(90, 154, 85, .55), transparent 70%),
+    linear-gradient(180deg, #3c7a43 0, #2b6236 900px, #1e4a2a 2200px);
+  background-repeat: no-repeat;
+}
+a { color: var(--aqua); text-underline-offset: 3px; }
+a:hover { color: var(--cream); }
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 680px; }
+
+h1, h2, h3 { font-family: "Lora", Georgia, serif; font-weight: 500; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(40px, 9vw, 64px); }
+h2 { font-size: clamp(28px, 5.5vw, 38px); margin-bottom: 14px; }
+h3 { font-size: 21px; margin-bottom: 6px; }
+p { margin: 0 0 14px; }
+.lead { font-size: 18px; color: var(--mute); }
+.muted { color: var(--mute); }
+.small { font-size: 14px; color: var(--faint); }
+
+/* --- top */
+header.top { padding: 22px 0 0; }
+header.top .wrap { display: flex; align-items: center; gap: 12px; }
+header.top img { width: 40px; height: 40px; border-radius: 11px; }
+header.top a.name { font: 500 22px "Lora", serif; color: var(--cream); text-decoration: none; }
+header.top nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+header.top nav a { color: var(--mute); text-decoration: none; }
+header.top nav a:hover { color: var(--cream); }
+
+/* --- sections */
+section { padding: 44px 0; }
+.hero-app { display: grid; gap: 28px; align-items: center; }
+.hero-app h1 { font-size: clamp(34px, 7vw, 50px); margin-bottom: 14px; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.chip { padding: 7px 16px; border-radius: 999px; background: var(--glass); border: 1px solid var(--edge); font-size: 14px; }
+
+.shots {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr);
+  gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 20px 16px; margin: 0 -20px;
+  scrollbar-width: thin;
+}
+.shots figure { margin: 0; scroll-snap-align: center; }
+.shots img { border-radius: 22px; box-shadow: 0 10px 30px rgba(0, 0, 0, .25); aspect-ratio: 9 / 16; width: 100%; height: auto; }
+.shots figcaption { font-size: 14px; color: var(--mute); text-align: center; margin-top: 10px; }
+
+.steps { display: grid; gap: 14px; counter-reset: s; padding: 0; margin: 0; list-style: none; }
+.steps li { background: var(--glass); border: 1px solid var(--edge); border-radius: 22px; padding: 20px 22px; }
+.steps li::before {
+  counter-increment: s; content: counter(s);
+  display: inline-grid; place-items: center; width: 32px; height: 32px; margin-bottom: 10px;
+  border-radius: 50%; background: var(--aqua); color: var(--forest); font-weight: 500;
+}
+.steps p { margin: 0; color: var(--mute); }
+
+.privacy-box { background: rgba(0, 0, 0, .14); border: 1px solid var(--edge); border-radius: 22px; padding: 24px; }
+.privacy-box ul { margin: 0 0 16px; padding-left: 20px; color: var(--mute); }
+
+/* --- policy page */
+.policy h1 { font-size: clamp(32px, 7vw, 44px); margin: 30px 0 8px; }
+.policy h2 { font-size: 24px; margin: 34px 0 10px; }
+.policy ul { padding-left: 20px; }
+.policy li { margin-bottom: 6px; }
+.policy .tldr { background: var(--glass); border: 1px solid var(--edge); border-radius: 18px; padding: 16px 20px; font-size: 17px; }
+
+footer { padding: 30px 0 44px; font-size: 14px; color: var(--faint); text-align: center; }
+footer a { color: var(--mute); }
+
+@media (min-width: 760px) {
+  .hero-app { grid-template-columns: 1.1fr 1fr; }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .shots { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); overflow: visible; padding: 4px 0 0; margin: 0; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
